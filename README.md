@@ -8,7 +8,7 @@
 
 ## Usage
 
-1. Create UIView of UpperNotificationViewType
+### 1. Create UIView of UpperNotificationViewType
 
 ```swift
 class MyNotification: UpperNotificationViewType {
@@ -29,7 +29,7 @@ class MyNotification: UpperNotificationViewType {
 }
 ```
 
-2. Create class or struct of UpperNotificationAnimatorType
+### 2. Create class or struct of UpperNotificationAnimatorType
 
 ```swift
 public protocol UpperNotificationAnimatorType {
@@ -42,13 +42,13 @@ public protocol UpperNotificationAnimatorType {
 struct MyAnimator: UpperNotificationViewType { ... }
 ```
 
-3. Create UpperNotificationController
+### 3. Create UpperNotificationController
 
 ```swift
 let notificationController = UpperNotificationController()
 ```
 
-4. Deliver notification
+### 4. Deliver notification
 
 ```swift
 
