@@ -8,12 +8,15 @@
 
 ## Usage
 
-### 1. Create UIView of UpperNotificationViewType
+### 1. Define UIView of UpperNotificationViewType
 
 ```swift
-class MyNotification: UpperNotificationViewType {
+public protocol UpperNotificationViewType: class {
 
-    func didPrepare(manualDismissClosure: () -> Void)
+    /**
+     - parameter manualDismissClosure: Call this closure to dismiss the notification view
+     */
+    func didPrepare(dismissClosure: () -> Void)
 
     func willAppear()
     func didAppear()
@@ -21,9 +24,11 @@ class MyNotification: UpperNotificationViewType {
     func willDisappear()
     func didDisappear()
 }
+
+class MyNotification: UpperNotificationViewType { … }
 ```
 
-### 2. Create class or struct of UpperNotificationAnimatorType
+### 2. Define class or struct of UpperNotificationAnimatorType
 
 ```swift
 public protocol UpperNotificationAnimatorType {

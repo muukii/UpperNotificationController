@@ -12,7 +12,10 @@ public protocol UpperNotificationViewType: class {
         
     // MARK: - LifeCycle
     
-    func didPrepare(manualDismissClosure: () -> Void)
+    /**
+     - parameter manualDismissClosure: Call this closure to dismiss the notification view
+     */
+    func didPrepare(dismissClosure: () -> Void)
     
     func willAppear()
     func didAppear()
