@@ -23,6 +23,7 @@ public class UpperNotificationController {
     
     public init() {
         notificationWindow.windowLevel = 3
+        notificationWindow.hidden = true
         notificationWindow.backgroundColor = UIColor.clearColor()
         notificationWindow.frame = UIScreen.mainScreen().bounds
         notificationViewController.beginAppearanceTransition(true, animated: false)
@@ -51,10 +52,12 @@ public class UpperNotificationController {
             }
             
             let keyWindow = UIApplication.sharedApplication().keyWindow
+            self.notificationWindow.hidden = false
             self.notificationWindow.makeKeyAndVisible()
-            self.notificationViewController.addNotificationView(notificationView: notification.factory(), animator: animator) { view in
+            self.notificationViewController.addNotificationView(notificationView: notification.factory(), animator: animator) { [weak self] view in
                 
                 keyWindow?.makeKeyAndVisible()
+                self?.notificationWindow.hidden = true
                 next()
             }
             })
