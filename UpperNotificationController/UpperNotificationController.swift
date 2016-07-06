@@ -30,7 +30,7 @@ public class UpperNotificationController {
         notificationViewController.endAppearanceTransition()
     }
     
-    public func deliver<T where T: UpperNotificationViewType, T: UIView>(notification notification: NotificationReservation<T>, animator: UpperNotificationAnimatorType) {
+    public func deliver<T where T: UpperNotificationViewType, T: UIView>(notification notification: NotificationContext<T>, animator: UpperNotificationAnimatorType) {
         
         closureQueue.append({ [weak self] in
             guard let `self` = self else { return }

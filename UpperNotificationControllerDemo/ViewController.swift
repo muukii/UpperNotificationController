@@ -30,7 +30,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func show(sender: AnyObject) {
-        let n = NotificationReservation<SampleNotificationView> {
+        let n = NotificationContext<SampleNotificationView> {
             SampleNotificationView.viewFromNib()
         }
         notification.deliver(notification: n, animator: Animator())

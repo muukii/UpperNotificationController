@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class NotificationReservation<T where T: UpperNotificationViewType, T: UIView> {
+public class NotificationContext<T where T: UpperNotificationViewType, T: UIView> {
     
     public let factory: () -> T
     public var cancel: Bool = false

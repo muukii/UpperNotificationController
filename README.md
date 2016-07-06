@@ -46,7 +46,7 @@ let notificationController = UpperNotificationController()
 
 ```swift
 
-let notification = NotificationReservation<SampleNotificationView> {
+let notification = NotificationContext<SampleNotificationView> {
     SampleNotificationView()
 }
 

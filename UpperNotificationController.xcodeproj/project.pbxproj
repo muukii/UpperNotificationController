@@ -21,7 +21,7 @@
 		4B4E41781D2B6E3800AA9CD5 /* UpperNotificationAnimatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B46B9481D2A9EC8000BEAC3 /* UpperNotificationAnimatorType.swift */; };
 		4B4E41791D2B6E3800AA9CD5 /* UpperNotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B46B9441D2A9C07000BEAC3 /* UpperNotificationController.swift */; };
 		4B4E417A1D2B6E3800AA9CD5 /* UpperNotificationViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B46B9461D2A9C3F000BEAC3 /* UpperNotificationViewType.swift */; };
-		4B66072D1D2C21CF0042E3D7 /* NotificationReservertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B66072C1D2C21CF0042E3D7 /* NotificationReservertion.swift */; };
+		4B66072D1D2C21CF0042E3D7 /* NotificationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B66072C1D2C21CF0042E3D7 /* NotificationContext.swift */; };
 		DBDE69A9BF8D478890E0505A /* Pods_UpperNotificationController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F5AA306E099C5582E34563E /* Pods_UpperNotificationController.framework */; };
 /* End PBXBuildFile section */
 
@@ -68,7 +68,7 @@
 		4B4E41691D2B6DAE00AA9CD5 /* UpperNotificationController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UpperNotificationController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B4E416B1D2B6DAE00AA9CD5 /* UpperNotificationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UpperNotificationController.h; sourceTree = "<group>"; };
 		4B4E41761D2B6E2800AA9CD5 /* SampleNotificationAnomator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleNotificationAnomator.swift; sourceTree = "<group>"; };
-		4B66072C1D2C21CF0042E3D7 /* NotificationReservertion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationReservertion.swift; sourceTree = "<group>"; };
+		4B66072C1D2C21CF0042E3D7 /* NotificationContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationContext.swift; sourceTree = "<group>"; };
 		9566A8589D1D2A8E77614B89 /* Pods-UpperNotificationControllerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UpperNotificationControllerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UpperNotificationControllerUITests/Pods-UpperNotificationControllerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		99E78084A518992F664DA09F /* Pods-UpperNotificationControllerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UpperNotificationControllerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-UpperNotificationControllerTests/Pods-UpperNotificationControllerTests.release.xcconfig"; sourceTree = "<group>"; };
 		9F5AA306E099C5582E34563E /* Pods_UpperNotificationController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UpperNotificationController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -140,7 +140,7 @@
 				4B46B9441D2A9C07000BEAC3 /* UpperNotificationController.swift */,
 				4B46B9481D2A9EC8000BEAC3 /* UpperNotificationAnimatorType.swift */,
 				4B46B9461D2A9C3F000BEAC3 /* UpperNotificationViewType.swift */,
-				4B66072C1D2C21CF0042E3D7 /* NotificationReservertion.swift */,
+				4B66072C1D2C21CF0042E3D7 /* NotificationContext.swift */,
 			);
 			path = UpperNotificationController;
 			sourceTree = "<group>";
@@ -344,7 +344,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B66072D1D2C21CF0042E3D7 /* NotificationReservertion.swift in Sources */,
+				4B66072D1D2C21CF0042E3D7 /* NotificationContext.swift in Sources */,
 				4B4E41781D2B6E3800AA9CD5 /* UpperNotificationAnimatorType.swift in Sources */,
 				4B4E417A1D2B6E3800AA9CD5 /* UpperNotificationViewType.swift in Sources */,
 				4B4E41791D2B6E3800AA9CD5 /* UpperNotificationController.swift in Sources */,
