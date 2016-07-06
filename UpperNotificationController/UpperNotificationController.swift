@@ -159,6 +159,8 @@ public class UpperNotificationController {
             
             NSLayoutConstraint.activateConstraints([top, left, right])
             
+            notificationView.layoutIfNeeded()
+            
             let size = notificationView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
             if size.height == 0 || size.width == 0 {
                 assertionFailure("NotificationView will not be appear.")
