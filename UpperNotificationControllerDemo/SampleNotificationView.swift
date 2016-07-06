@@ -11,20 +11,14 @@ import UpperNotificationController
 
 final class SampleNotificationView: UIView, UpperNotificationViewType {
     
-    var manualDismissClosure: (() -> Void)?
-    
-    var shouldDismiss: Bool {
-        print("[NotificationView] shouldDismiss")
-        return true
-    }
-    
     func didPrepare(manualDismissClosure: () -> Void) {
-        self.manualDismissClosure = manualDismissClosure
-    }
-    
-    var duration: NSTimeInterval {
-        print("[NotificationView] duration")
-        return 2
+        
+        let delay = 2 * Double(NSEC_PER_SEC)
+        let time  = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+        dispatch_after(time, dispatch_get_main_queue(), {
+            
+            manualDismissClosure()
+            })
     }
     
     func willAppear() {
@@ -33,8 +27,6 @@ final class SampleNotificationView: UIView, UpperNotificationViewType {
     
     func didAppear() {
         print("[NotificationView] didAppear")
-        
-        self.manualDismissClosure?()
     }
     
     func willDisappear() {

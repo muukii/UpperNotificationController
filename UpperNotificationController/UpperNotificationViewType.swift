@@ -9,12 +9,7 @@
 import Foundation
 
 public protocol UpperNotificationViewType: class {
-    
-    // MARK: - Behavior
-    
-    var duration: NSTimeInterval { get }
-    var shouldDismiss: Bool { get }
-    
+        
     // MARK: - LifeCycle
     
     func didPrepare(manualDismissClosure: () -> Void)

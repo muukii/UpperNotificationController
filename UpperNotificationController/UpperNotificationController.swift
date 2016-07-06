@@ -166,8 +166,6 @@ public class UpperNotificationController {
             
             notificationView.didPrepare(removeNotificationViewClosure(notificationView: notificationView, animator: animator, completion: completion))
             
-            let duration = notificationView.duration
-            
             notificationView.willAppear()
             
             animator.applyPresentAnimation(notificationView: notificationView) { [weak notificationView] in
@@ -177,31 +175,6 @@ public class UpperNotificationController {
                 }
                 
                 notificationView.didAppear()
-                
-                let delay = duration * Double(NSEC_PER_SEC)
-                let time  = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
-                dispatch_after(time, dispatch_get_main_queue(), { [weak notificationView] in
-                    
-                    guard let notificationView = notificationView else {
-                        // Already dismissed.
-                        return
-                    }
-                    
-                    guard notificationView.window != nil else {
-                        // Already dismissed.
-                        return
-                    }
-                    
-                    guard notificationView.shouldDismiss == true else {
-                        return
-                    }
-                    
-                    self.removeNotificationView(
-                        notificationView: notificationView,
-                        animator: animator,
-                        completion: completion
-                    )
-                })
             }
         }
         
@@ -226,7 +199,10 @@ public class UpperNotificationController {
                 
                 notificationView.willDisappear()
                 
-                animator.applyDismissAnimation(notificationView: notificationView) {
+                animator.applyDismissAnimation(notificationView: notificationView) { [weak notificationView] in
+                    
+                    guard let notificationView = notificationView else { return }
+                    
                     notificationView.didDisappear()
                     notificationView.removeFromSuperview()
                     completion(notificationView)
