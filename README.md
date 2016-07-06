@@ -12,12 +12,6 @@
 
 ```swift
 class MyNotification: UpperNotificationViewType {
-    // MARK: - Behavior
-
-    var duration: NSTimeInterval { get }
-    var shouldDismiss: Bool { get }
-
-    // MARK: - LifeCycle
 
     func didPrepare(manualDismissClosure: () -> Void)
 
