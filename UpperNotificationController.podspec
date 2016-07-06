@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "UpperNotificationController"
-  s.version          = "0.1.1"
+  s.version          = "0.1.2"
   s.summary          = "UpperNotificationController is core for appear notification to upper on app screen."
   s.homepage         = "https://github.com/muukii/UpperNotificationController"
   s.license          = 'MIT'
