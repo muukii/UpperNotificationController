@@ -24,7 +24,7 @@ public class UpperNotificationController {
     public init() {
         notificationWindow.windowLevel = 3
         notificationWindow.backgroundColor = UIColor.clearColor()
-        notificationWindow.bounds = UIScreen.mainScreen().bounds
+        notificationWindow.frame = UIScreen.mainScreen().bounds
         notificationViewController.beginAppearanceTransition(true, animated: false)
         notificationWindow.rootViewController = notificationViewController
         notificationViewController.endAppearanceTransition()
