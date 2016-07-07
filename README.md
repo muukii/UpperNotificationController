@@ -6,6 +6,10 @@
 [![License](https://img.shields.io/cocoapods/l/UpperNotificationController.svg?style=flat)](http://cocoapods.org/pods/UpperNotificationController)
 [![Platform](https://img.shields.io/cocoapods/p/UpperNotificationController.svg?style=flat)](http://cocoapods.org/pods/UpperNotificationController)
 
+UpperNotificationController is core for appear notification to upper on app screen.
+
+Sample: [ModernUpperNotificationView](https://github.com/muukii/ModernUpperNotificationView)
+
 ## Usage
 
 ### 1. Define UIView of UpperNotificationViewType
