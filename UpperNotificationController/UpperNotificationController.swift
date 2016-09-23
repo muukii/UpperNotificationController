@@ -8,11 +8,11 @@
 
 import UIKit
 
-public class UpperNotificationController {
+open class UpperNotificationController {
     
     // MARK: - Public
     
-    public var windowLevel: UIWindowLevel {
+    open var windowLevel: UIWindowLevel {
         get {
             return notificationWindow.windowLevel
         }
@@ -23,15 +23,15 @@ public class UpperNotificationController {
     
     public init() {
         notificationWindow.windowLevel = 3
-        notificationWindow.hidden = true
-        notificationWindow.backgroundColor = UIColor.clearColor()
-        notificationWindow.frame = UIScreen.mainScreen().bounds
+        notificationWindow.isHidden = true
+        notificationWindow.backgroundColor = UIColor.clear
+        notificationWindow.frame = UIScreen.main.bounds
         notificationViewController.beginAppearanceTransition(true, animated: false)
         notificationWindow.rootViewController = notificationViewController
         notificationViewController.endAppearanceTransition()
     }
     
-    public func deliver<T where T: UpperNotificationViewType, T: UIView>(notification notification: NotificationContext<T>, animator: UpperNotificationAnimatorType) {
+    open func deliver<T>(notification: NotificationContext<T>, animator: UpperNotificationAnimatorType) where T: UpperNotificationViewType, T: UIView {
         
         closureQueue.append({ [weak self] in
             guard let `self` = self else { return }
@@ -51,13 +51,13 @@ public class UpperNotificationController {
                 return
             }
             
-            let keyWindow = UIApplication.sharedApplication().keyWindow
-            self.notificationWindow.hidden = false
+            let keyWindow = UIApplication.shared.keyWindow
+            self.notificationWindow.isHidden = false
             self.notificationWindow.makeKeyAndVisible()
             self.notificationViewController.addNotificationView(notificationView: notification.factory(), animator: animator) { [weak self] view in
                 
                 keyWindow?.makeKeyAndVisible()
-                self?.notificationWindow.hidden = true
+                self?.notificationWindow.isHidden = true
                 next()
             }
             })
@@ -74,27 +74,27 @@ public class UpperNotificationController {
     
     
     // MARK: - Private
-    private var closureQueue: [() -> Void] = []
-    private let notificationWindow: NotificationWindow = NotificationWindow()
-    private let notificationViewController: NotificationViewController = NotificationViewController()
+    fileprivate var closureQueue: [() -> Void] = []
+    fileprivate let notificationWindow: NotificationWindow = NotificationWindow()
+    fileprivate let notificationViewController: NotificationViewController = NotificationViewController()
     
     
     // MARK: - Private Classes
     
-    private class NotificationWindow: UIWindow {
+    fileprivate class NotificationWindow: UIWindow {
         
         override init(frame: CGRect) {
             super.init(frame: frame)
-            opaque = false
+            isOpaque = false
         }
         
         required init?(coder aDecoder: NSCoder) {
             fatalError("init(coder:) has not been implemented")
         }
         
-        override func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
+        override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
             
-            let view = super.hitTest(point, withEvent: event)
+            let view = super.hitTest(point, with: event)
             
             if view == self {
                 
@@ -104,23 +104,23 @@ public class UpperNotificationController {
         }
     }
     
-    private class NotificationViewController: UIViewController {
+    fileprivate class NotificationViewController: UIViewController {
         
-        private override func loadView() {
+        fileprivate override func loadView() {
             self.view = View()
         }
         
-        private override func viewDidLoad() {
+        fileprivate override func viewDidLoad() {
             super.viewDidLoad()
-            view.opaque = false
-            view.backgroundColor = UIColor.clearColor()
+            view.isOpaque = false
+            view.backgroundColor = UIColor.clear
         }
         
         var hasNotificationView: Bool {
             return view.subviews.count > 0
         }
         
-        func addNotificationView<T where T: UpperNotificationViewType, T: UIView>(notificationView notificationView: T, animator: UpperNotificationAnimatorType, completion: T -> Void) {
+        func addNotificationView<T>(notificationView: T, animator: UpperNotificationAnimatorType, completion: @escaping (T) -> Void) where T: UpperNotificationViewType, T: UIView {
             
             guard view.subviews.count == 0 else {
                 assertionFailure("It is necessary to remove the old notification view, Check with hasNotificationView")
@@ -132,39 +132,39 @@ public class UpperNotificationController {
             
             let top = NSLayoutConstraint(
                 item: notificationView,
-                attribute: .Top,
-                relatedBy: .Equal,
+                attribute: .top,
+                relatedBy: .equal,
                 toItem: view,
-                attribute: .Top,
+                attribute: .top,
                 multiplier: 1,
                 constant: 0
             )
             
             let left = NSLayoutConstraint(
                 item: notificationView,
-                attribute: .Left,
-                relatedBy: .Equal,
+                attribute: .left,
+                relatedBy: .equal,
                 toItem: view,
-                attribute: .Left,
+                attribute: .left,
                 multiplier: 1,
                 constant: 0
             )
             
             let right = NSLayoutConstraint(
                 item: notificationView,
-                attribute: .Right,
-                relatedBy: .Equal,
+                attribute: .right,
+                relatedBy: .equal,
                 toItem: view,
-                attribute: .Right,
+                attribute: .right,
                 multiplier: 1,
                 constant: 0
             )
             
-            NSLayoutConstraint.activateConstraints([top, left, right])
+            NSLayoutConstraint.activate([top, left, right])
             
             notificationView.layoutIfNeeded()
             
-            let size = notificationView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
+            let size = notificationView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
             if size.height == 0 || size.width == 0 {
                 assertionFailure("NotificationView will not be appear.")
             }
@@ -183,12 +183,12 @@ public class UpperNotificationController {
             }
         }
         
-        func removeNotificationView<T where T: UpperNotificationViewType, T: UIView>(notificationView notificationView: T, animator: UpperNotificationAnimatorType, completion: T -> Void) {
+        func removeNotificationView<T>(notificationView: T, animator: UpperNotificationAnimatorType, completion: @escaping (T) -> Void) where T: UpperNotificationViewType, T: UIView {
             
             removeNotificationViewClosure(notificationView: notificationView, animator: animator, completion: completion)()
         }
         
-        private func removeNotificationViewClosure<T where T: UpperNotificationViewType, T: UIView>(notificationView notificationView: T, animator: UpperNotificationAnimatorType, completion: T -> Void) -> () -> Void {
+        fileprivate func removeNotificationViewClosure<T>(notificationView: T, animator: UpperNotificationAnimatorType, completion: @escaping (T) -> Void) -> () -> Void where T: UpperNotificationViewType, T: UIView {
             
             return { [weak notificationView] in
                 
@@ -216,10 +216,10 @@ public class UpperNotificationController {
         }
         
         // MARK: - Private Class
-        private class View: UIView {
-            override func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
+        fileprivate class View: UIView {
+            override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
                 
-                let view = super.hitTest(point, withEvent: event)
+                let view = super.hitTest(point, with: event)
                 
                 if view == self {
                     

@@ -8,12 +8,12 @@
 
 import Foundation
 
-public class NotificationContext<T where T: UpperNotificationViewType, T: UIView> {
+open class NotificationContext<T> where T: UpperNotificationViewType, T: UIView {
     
-    public let factory: () -> T
-    public var cancel: Bool = false
+    open let factory: () -> T
+    open var cancel: Bool = false
     
-    public init(factory: () -> T) {
+    public init(factory: @escaping () -> T) {
         self.factory = factory
     }
 }

@@ -15,7 +15,7 @@ public protocol UpperNotificationViewType: class {
     /**
      - parameter manualDismissClosure: Call this closure to dismiss the notification view
      */
-    func didPrepare(dismissClosure: () -> Void)
+    func didPrepare(_ dismissClosure: @escaping () -> Void)
     
     func willAppear()
     func didAppear()

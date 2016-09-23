@@ -10,13 +10,13 @@ import UIKit
 
 public protocol UpperNotificationAnimatorType {
         
-    func applyPresentAnimation<T where T: UpperNotificationViewType, T: UIView>(notificationView notificationView: T, completion: () -> Void)
+    func applyPresentAnimation<T>(notificationView: T, completion: @escaping () -> Void) where T: UpperNotificationViewType, T: UIView
     
-    func applyDismissAnimation<T where T: UpperNotificationViewType, T: UIView>(notificationView notificationView: T, completion: () -> Void)
+    func applyDismissAnimation<T>(notificationView: T, completion: @escaping () -> Void) where T: UpperNotificationViewType, T: UIView
 }
 
 extension UpperNotificationAnimatorType {
     public var statusBarWindow: UIWindow {
-        return UIApplication.sharedApplication().valueForKey("_statusBarWindow") as! UIWindow
+        return UIApplication.shared.value(forKey: "_statusBarWindow") as! UIWindow
     }
 }

@@ -19,21 +19,21 @@ class ViewController: UIViewController {
         
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
 
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
     }
     
-    @IBAction func show(sender: AnyObject) {
+    @IBAction func show(_ sender: AnyObject) {
         let n = NotificationContext<SampleNotificationView> {
             SampleNotificationView.viewFromNib()
         }
-        notification.deliver(notification: n, animator: Animator())
+        notification.deliver(notification: n, animator: Animator())                
     }
 }
 

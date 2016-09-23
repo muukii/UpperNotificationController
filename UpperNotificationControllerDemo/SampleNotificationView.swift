@@ -10,12 +10,12 @@ import UIKit
 import UpperNotificationController
 
 final class SampleNotificationView: UIView, UpperNotificationViewType {
-    
-    func didPrepare(dismissClosure: () -> Void) {
+
+    func didPrepare(_ dismissClosure: @escaping () -> Void) {
         
         let delay = 2 * Double(NSEC_PER_SEC)
-        let time  = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
-        dispatch_after(time, dispatch_get_main_queue(), {
+        let time  = DispatchTime.now() + Double(Int64(delay)) / Double(NSEC_PER_SEC)
+        DispatchQueue.main.asyncAfter(deadline: time, execute: {
             
             dismissClosure()
             })
@@ -38,7 +38,7 @@ final class SampleNotificationView: UIView, UpperNotificationViewType {
     }
     
     class func viewFromNib() -> SampleNotificationView {
-        return UINib(nibName: "SampleNotificationView", bundle: nil).instantiateWithOwner(nil, options: nil).first as! SampleNotificationView
+        return UINib(nibName: "SampleNotificationView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! SampleNotificationView
     }
     
     @IBOutlet weak var iconImageView: UIImageView!
